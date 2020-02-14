@@ -1,7 +1,7 @@
 Class {
 	#name : #BaselineOfJSON,
 	#superclass : #Object,
-	#category : #JSON
+	#category : #BaselineOfJSON
 }
 
 { #category : #baselines }
