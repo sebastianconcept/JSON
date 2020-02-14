@@ -1,6 +1,6 @@
 Class {
 	#name : #BaselineOfJSON,
-	#superclass : #Object,
+	#superclass : #BaselineOf,
 	#category : #BaselineOfJSON
 }
 
