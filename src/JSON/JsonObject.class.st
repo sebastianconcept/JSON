@@ -1,10 +1,16 @@
+"
+I'm a conventient Dictionary-like object with reflective features.
+I don't need getters and setters because I use my DNU to catch anything and assume is either setting or getting (answering nil by default when nothing was set under that selector).
+
+
+"
 Class {
 	#name : #JsonObject,
 	#superclass : #Dictionary,
 	#category : #JSON
 }
 
-{ #category : #'as yet unclassified' }
+{ #category : #'instance creation' }
 JsonObject class >> fromAssociations: collectionOfAssociations [
 
 	| result |
@@ -42,6 +48,11 @@ JsonObject >> addValueDifferencesWith: aJsonObject to: anOrderedCollection [
 				ifFalse: [ val addJsonDifferencesWith: otherVal to: anOrderedCollection ] ]
 ]
 
+{ #category : #converting }
+JsonObject >> asJsonObject [
+	^ self
+]
+
 { #category : #accessing }
 JsonObject >> at: aKey [
 
@@ -49,7 +60,7 @@ JsonObject >> at: aKey [
 	^ self at: aKey ifAbsent: [nil]
 ]
 
-{ #category : #'as yet unclassified' }
+{ #category : #reflection }
 JsonObject >> doesNotUnderstand: aMessage [
 	| key |
 	key := aMessage selector.

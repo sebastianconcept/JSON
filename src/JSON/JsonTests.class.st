@@ -7,30 +7,30 @@ Class {
 	#category : #JSON
 }
 
-{ #category : #'as yet unclassified' }
+{ #category : #asserting }
 JsonTests >> json: aString equals: aValue [
 	| readValue |
 	readValue := self readFrom: aString.
 	self assert: readValue = aValue.
 ]
 
-{ #category : #'as yet unclassified' }
+{ #category : #'instance creation' }
 JsonTests >> readFrom: aString [
 	^ (Json newWithConstructors: {JsonDummyTestObject.}) readFrom: aString readStream
 
 ]
 
-{ #category : #'as yet unclassified' }
+{ #category : #'instance creation' }
 JsonTests >> render: anObject equals: aString [
 	self assert: (Json render: anObject) = aString
 ]
 
-{ #category : #'as yet unclassified' }
+{ #category : #'instance creation' }
 JsonTests >> simpleDummyObject [
 	^ JsonDummyTestObject new a: 1; b: 2; c: 3; yourself
 ]
 
-{ #category : #'as yet unclassified' }
+{ #category : #testing }
 JsonTests >> testArray [
 	self json: '[]' equals: #().
 	self json: '[[]]' equals: #(#()).
@@ -39,7 +39,7 @@ JsonTests >> testArray [
 	self json: '[["a", "b", null]]' equals: #(('a' 'b' nil)).
 ]
 
-{ #category : #'as yet unclassified' }
+{ #category : #testing }
 JsonTests >> testAtomFalse [
 	self json: 'false' equals: false.
 	self json: '  false' equals: false.
@@ -48,7 +48,7 @@ JsonTests >> testAtomFalse [
 
 ]
 
-{ #category : #'as yet unclassified' }
+{ #category : #testing }
 JsonTests >> testAtomNull [
 	self json: 'null' equals: nil.
 	self json: '  null' equals: nil.
@@ -57,7 +57,7 @@ JsonTests >> testAtomNull [
 
 ]
 
-{ #category : #'as yet unclassified' }
+{ #category : #testing }
 JsonTests >> testAtomNumber [
 	self json: '1' equals: 1.
 	self json: '0123' equals: 123.
@@ -67,7 +67,7 @@ JsonTests >> testAtomNumber [
 	self json: '[-1.2]' equals: #(-1.2).
 ]
 
-{ #category : #'as yet unclassified' }
+{ #category : #testing }
 JsonTests >> testAtomString [
 	self json: '"hi"' equals: 'hi'.
 	self json: '"\""' equals: '"'.
@@ -77,7 +77,7 @@ JsonTests >> testAtomString [
 	self json: '"a\nb"' equals: ({$a. Character lf. $b} as: String).
 ]
 
-{ #category : #'as yet unclassified' }
+{ #category : #testing }
 JsonTests >> testAtomTrue [
 	self json: 'true' equals: true.
 	self json: '  true' equals: true.
@@ -86,13 +86,13 @@ JsonTests >> testAtomTrue [
 
 ]
 
-{ #category : #'as yet unclassified' }
+{ #category : #testing }
 JsonTests >> testCtor [
 	self json: '@JsonDummyTestObject {"a": 1, "b": 2, "c": 3}' equals: self simpleDummyObject.
 	self json: (Json render: self simpleDummyObject) equals: self simpleDummyObject.
 ]
 
-{ #category : #'as yet unclassified' }
+{ #category : #testing }
 JsonTests >> testDictionary [
 	self json: '{}' equals: (JsonObject new).
 	self json: '{"a": "a"}' equals: (JsonObject new at: 'a' put: 'a'; yourself).
@@ -100,7 +100,7 @@ JsonTests >> testDictionary [
 	self json: '{"a":"b", "b":"a"}' equals: (JsonObject new add: 'a'->'b'; add: 'b'->'a';yourself).
 ]
 
-{ #category : #'as yet unclassified' }
+{ #category : #testing }
 JsonTests >> testMissingCtor [
 	self 
 		should: [self readFrom: '@Missing[]']
@@ -108,14 +108,14 @@ JsonTests >> testMissingCtor [
 
 ]
 
-{ #category : #'as yet unclassified' }
+{ #category : #testing }
 JsonTests >> testMissingCtorNoMap [
 	self 
 		should: [Json new readFrom: '@Missing[]' readStream]
 		raise: JsonSyntaxError
 ]
 
-{ #category : #'as yet unclassified' }
+{ #category : #testing }
 JsonTests >> testStringWithUnicode [
 
 	| unicodeString |
@@ -125,7 +125,7 @@ JsonTests >> testStringWithUnicode [
 	self render: unicodeString equals: '"', unicodeString, '"'.
 ]
 
-{ #category : #'as yet unclassified' }
+{ #category : #testing }
 JsonTests >> testWriteAssociation [
 	self render: 'key' -> 'value' equals: '"key": "value"'.
 	self render: 'key' -> 2 equals: '"key": 2'.
@@ -138,7 +138,7 @@ JsonTests >> testWriteAssociation [
 	
 ]
 
-{ #category : #'as yet unclassified' }
+{ #category : #testing }
 JsonTests >> testWriteString [
 	self render: '"' equals: '"\""'.
 	self render: '\' equals: '"\\"'.
