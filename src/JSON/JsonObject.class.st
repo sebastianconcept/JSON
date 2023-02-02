@@ -42,6 +42,11 @@ JsonObject >> addValueDifferencesWith: aJsonObject to: anOrderedCollection [
 				ifFalse: [ val addJsonDifferencesWith: otherVal to: anOrderedCollection ] ]
 ]
 
+{ #category : #converting }
+JsonObject >> asJsonObject [
+	^ self
+]
+
 { #category : #accessing }
 JsonObject >> at: aKey [
 
@@ -49,7 +54,7 @@ JsonObject >> at: aKey [
 	^ self at: aKey ifAbsent: [nil]
 ]
 
-{ #category : #'as yet unclassified' }
+{ #category : #reflection }
 JsonObject >> doesNotUnderstand: aMessage [
 	| key |
 	key := aMessage selector.
