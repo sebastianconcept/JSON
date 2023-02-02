@@ -1,3 +1,6 @@
+"
+I'm like JsonObject but I preserve order
+"
 Class {
 	#name : #OrderedJsonObject,
 	#superclass : #OrderedDictionary,

@@ -1,3 +1,6 @@
+"
+I can help parsing a string to an OrderedJsonObject
+"
 Class {
 	#name : #OrderedJson,
 	#superclass : #Json,

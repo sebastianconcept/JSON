@@ -1,3 +1,6 @@
+"
+I help load the JSON package.
+"
 Class {
 	#name : #BaselineOfJSON,
 	#superclass : #BaselineOf,

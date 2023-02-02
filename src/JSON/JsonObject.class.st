@@ -1,10 +1,16 @@
+"
+I'm a conventient Dictionary-like object with reflective features.
+I don't need getters and setters because I use my DNU to catch anything and assume is either setting or getting (answering nil by default when nothing was set under that selector).
+
+
+"
 Class {
 	#name : #JsonObject,
 	#superclass : #Dictionary,
 	#category : #JSON
 }
 
-{ #category : #'as yet unclassified' }
+{ #category : #'instance creation' }
 JsonObject class >> fromAssociations: collectionOfAssociations [
 
 	| result |
